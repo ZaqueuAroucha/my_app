@@ -29,6 +29,7 @@ const CustomerCard = ({
   email,
   avatar,
   className,
+  onRemoveCustomer,
 }) => {
   const classes = useStyles()
 
@@ -39,7 +40,7 @@ const CustomerCard = ({
   }
 
   const handleConfirmModal = () => {
-    alert('ok')
+    onRemoveCustomer()
   }
 
   const handleRemoveCustomers = () => {

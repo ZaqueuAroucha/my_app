@@ -27,6 +27,10 @@ const Customers = () => {
       })
   }, [])
 
+  const handleRemoveCustomer = () => {
+    alert('ok, remover customer')
+  }
+
   return (
          
     <Grid container>        
@@ -39,6 +43,7 @@ const Customers = () => {
               email={item.email}
               avatar={item.avatar}
               className={classes.card}
+              onRemoveCustomer={handleRemoveCustomer}
             />
           </Grid>
         ))           
