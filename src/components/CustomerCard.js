@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const CustomerCard = ({
+  id,
   name,
   lastname,
   email,
@@ -39,8 +40,9 @@ const CustomerCard = ({
     setOpenModal(!openModal)
   }
 
-  const handleConfirmModal = () => {
-    onRemoveCustomer()
+  const handleConfirmModal = (id) => {
+    onRemoveCustomer(id)
+    handleToggleOpenModal()
   }
 
   const handleRemoveCustomers = () => {
@@ -72,7 +74,7 @@ const CustomerCard = ({
       <ModalConfirm
         open={openModal}
         onClose={handleToggleOpenModal}
-        onConfirm={handleConfirmModal}
+        onConfirm={() => handleConfirmModal(id)}
         title="Deseja realmente excluir este cadastro?"
         message="Depois de confirmar não será possivel reverter esta operação."
       />

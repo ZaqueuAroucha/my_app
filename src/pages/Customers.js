@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   card: {
-    padding: theme.spacing(2),
+    margin: theme.spacing(2),
   },
 }))
 
@@ -23,12 +23,19 @@ const Customers = () => {
     axios.get('https://reqres.in/api/users')  
       .then(response => {
         const { data } = response.data
+
         setCustomers(data)
       })
   }, [])
 
-  const handleRemoveCustomer = () => {
-    alert('ok, remover customer')
+  const handleRemoveCustomer = id => {
+    axios.delete(`https://reqres.in/api/users/${id}`)
+    .then(() => {      
+      const newCustomersState = customers.filter(customer => customer.id !== id)
+
+      setCustomers(newCustomersState)
+      
+    })
   }
 
   return (
@@ -38,6 +45,7 @@ const Customers = () => {
         customers.map(item => (
           <Grid item xs={12} md={4}>
             <CustomersCard
+            id={item.id}
               name={item.first_name}
               lastname={item.last_name}
               email={item.email}
