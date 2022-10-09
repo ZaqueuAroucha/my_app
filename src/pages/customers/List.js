@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid'
 
-import CustomersCard from '../components/CustomerCard'
+import CustomersCard from '../../components/CustomerCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Customers = () => {
+const List = () => {
   const classes = useStyles()
   const [customers, setCustomers] = useState([])
 
@@ -45,7 +45,7 @@ const Customers = () => {
         customers.map(item => (
           <Grid item xs={12} md={4}>
             <CustomersCard
-            id={item.id}
+              id={item.id}
               name={item.first_name}
               lastname={item.last_name}
               email={item.email}
@@ -60,4 +60,4 @@ const Customers = () => {
   )
 }
 
-export default Customers
+export default List
